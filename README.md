@@ -110,4 +110,10 @@ Built as a personal and college portfolio project to practise frontend developme
 
 ---
 
+## Screenshots
+
+### Homepage
+
+![Himalayan Bites homepage](Screenshots/homepage.png.png)
+
 **Note:** This project currently runs locally. Online ordering requires the server and database to be hosted before it can accept orders from public visitors.
