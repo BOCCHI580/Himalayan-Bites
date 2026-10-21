@@ -1,28 +1,33 @@
-# Himalayan Bites 🍜🏔️
+# 🏔️ Himalayan Bites 🍜
 
-A restaurant website project featuring a food menu, shopping cart, checkout page, and a Node.js backend connected to MySQL.
+A full-stack restaurant website built to make online food ordering simple and convenient. Browse the menu, add dishes to your cart, and place orders through a website powered by Node.js, Express.js, and MySQL.
+
+**Built with:** HTML · CSS · JavaScript · Node.js · Express.js · MySQL
 
 ## ✨ Features
 
-- Browse the restaurant website and menu
-- Add food items to a shopping cart
-- Proceed to checkout and submit an order
-- Store orders and order items in MySQL
-- Backend API built with Express
-- Responsive website structure with HTML, CSS, and JavaScript
+- 🍽️ Browse the restaurant menu
+- 🛒 Add food items to a shopping cart
+- 🧾 Proceed to checkout and submit an order
+- 🗄️ Store orders and order items in MySQL
+- ⚙️ Handle backend requests using Node.js and Express.js
+- 📱 Use the website on different screen sizes
 
 ## 🛠️ Technologies Used
 
-- **Frontend:** HTML, CSS, JavaScript
+
+- **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** Node.js, Express.js
 - **Database:** MySQL
-- **Database driver:** mysql2
-- **Environment configuration:** dotenv
-- **Version control:** Git and GitHub
+- **Database Driver:** mysql2
+- **Environment Configuration:** dotenv
+- **Version Control:** Git and GitHub
+
 
 ## 📁 Project Structure
 
 ```text
+
 himalayan-bites/
 ├── public/
 │   ├── css/
@@ -35,11 +40,15 @@ himalayan-bites/
 │   └── orders.html
 ├── server/
 │   └── db.js
+├── Screenshots/
+│   └── homepage.png.png
+├── .env                 # Local environment variables (not committed)
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
 ├── server.js
 └── README.md
+
 ```
 
 ## ⚙️ Run Locally
@@ -79,7 +88,16 @@ Replace `your_mysql_password` with your own local MySQL password. **Never commit
 
 ### 4. Set up the database
 
-Create a MySQL database named `himalayan_bites_db` and create the required tables: `menu_items`, `orders`, `order_items`, and `table_bookings`.
+
+Create a MySQL database named `himalayan_bites_db`. Make sure these tables exist before running the website:
+
+- `menu_items` — stores restaurant menu items
+- `orders` — stores customer orders
+- `order_items` — stores the items in each order
+- `table_bookings` — stores table booking information
+
+Configure the database connection using the `.env` example above. Use your own local MySQL credentials, and never upload your real `.env` file to GitHub.
+
 
 Add your own menu items to the `menu_items` table before testing orders.
 
@@ -93,8 +111,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🔌 API Endpoint
 
-- `GET /api/health` — checks whether the server is running
-- `POST /api/orders` — submits a delivery order
+
+- **`GET /api/health`** — Checks whether the backend server is running.
+- **`POST /api/orders`** — Accepts a customer delivery order and saves the order information to MySQL.
+
 
 ## 🚧 Future Improvements
 
