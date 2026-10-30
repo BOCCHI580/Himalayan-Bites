@@ -1,1 +1,1 @@
-{"name":"himalayan-bites","version":"1.0.0","description":"Restaurant ordering website","main":"server.js","scripts":{"start":"node server.js"},"dependencies":{"dotenv":"^18.0.8","express":"^5.3.0","mysql2":"^3.24.6"}}
+{"name":"himalayan-bites","version":"1.0.0","description":"Restaurant ordering website","main":"server.js","scripts":{"start":"node server.js"},"dependencies":{"bcrypt":"^6.0.0","dotenv":"^18.0.8","express":"^5.3.0","express-session":"^1.19.0","mysql2":"^3.24.6"},"allowScripts":{"bcrypt@6.0.0":true}}

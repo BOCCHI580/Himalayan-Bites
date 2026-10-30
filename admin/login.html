@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Himalayan Bites</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f6f1e9;
+      color: #29251f;
+    }
+
+    .login-box {
+      width: 90%;
+      max-width: 400px;
+      padding: 32px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+      color: #8b3f25;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #8b3f25;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6e301c;
+    }
+
+    #message {
+      color: #b42318;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h1>Himalayan Bites</h1>
+    <p>Admin Dashboard Login</p>
+
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="submit">Log In</button>
+      <p id="message" role="alert"></p>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      message.textContent = "Logging in...";
+
+      try {
+        const response = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Login failed.");
+        }
+
+        window.location.href = "/admin";
+      } catch (error) {
+        message.textContent = error.message;
+      }
+    });
+  </script>
+</body>
+</html>
