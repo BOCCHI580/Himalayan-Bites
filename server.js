@@ -302,12 +302,15 @@ app.post("/api/orders", async (req, res) => {
       orderId: orderResult.insertId,
       totalAmount: Number(totalAmount.toFixed(2))
     });
-  } catch (error) {
+  }
+    catch (error) {
     if (connection) {
       await connection.rollback();
     }
 
-    console.error("Order error:", error.message);
+    console.error("Order error:", error);
+    console.error("Order error details:", error.sqlMessage || error.message);
+
 
     res.status(400).json({
       error: error.message || "Unable to place your order."
