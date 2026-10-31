@@ -47,8 +47,14 @@ app.post("/api/admin/login", async (req, res) => {
 
   const usernameMatches =
   username === process.env.ADMIN_USERNAME;
+  console.log("Admin username matches:", usernameMatches);
+  console.log(
+  "Admin hash exists:",
+  Boolean(process.env.ADMIN_PASSWORD_HASH)
+  );
 
 const passwordMatches =
+console.log("Admin password matches:", passwordMatches);
   typeof password === "string" &&
   typeof process.env.ADMIN_PASSWORD_HASH === "string" &&
   await bcrypt.compare(
@@ -303,13 +309,14 @@ app.post("/api/orders", async (req, res) => {
       totalAmount: Number(totalAmount.toFixed(2))
     });
   }
-    catch (error) {
+catch (error) {
     if (connection) {
       await connection.rollback();
     }
 
     console.error("Order error:", error);
     console.error("Order error details:", error.sqlMessage || error.message);
+
 
 
     res.status(400).json({
