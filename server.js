@@ -45,29 +45,29 @@ app.post("/api/admin/login", async (req, res) => {
       error: "Please provide valid login details."
     });
   }
-
-  const usernameMatches =
+const usernameMatches =
   username === process.env.ADMIN_USERNAME;
-  console.log("Admin username matches:", usernameMatches);
-  console.log(
+
+console.log("Admin username matches:", usernameMatches);
+
+console.log(
   "Admin hash exists:",
   Boolean(process.env.ADMIN_PASSWORD_HASH)
-  );
+);
 
 const passwordMatches =
-console.log("Admin password matches:", passwordMatches);
-  typeof password === "string" &&
-  typeof process.env.ADMIN_PASSWORD_HASH === "string" &&
   await bcrypt.compare(
     password,
     process.env.ADMIN_PASSWORD_HASH
   );
 
-  if (!usernameMatches || !passwordMatches) {
-    return res.status(401).json({
-      error: "Incorrect username or password."
-    });
-  }
+console.log("Admin password matches:", passwordMatches);
+
+if (!usernameMatches || !passwordMatches) {
+  return res.status(401).json({
+    error: "Incorrect username or password."
+  });
+}
 req.session.regenerate((error) => {
   if (error) {
     console.error("Session regeneration error:", error.message);
